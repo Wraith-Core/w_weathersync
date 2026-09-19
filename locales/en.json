@@ -1,0 +1,46 @@
+{
+  "notify_title": "Weather & Time",
+  "weather": {
+    "updated": "Weather has been updated.",
+    "invalid": "Invalid weather type. Valid types: blizzard, clouds, drizzle, fog, groundblizzard, hail, highpressure, hurricane, misty, overcast, overcastdark, rain, sandstorm, shower, sleet, snow, snowlight, sunny, thunder, thunderstorm, whiteout",
+    "willchangeto": "Weather will change to: %s."
+  },
+  "dynamic_weather": {
+    "enabled": "Dynamic weather changes are now enabled.",
+    "disabled": "Dynamic weather changes are now disabled."
+  },
+  "time": {
+    "now_frozen": "Time is now frozen.",
+    "now_unfrozen": "Time is no longer frozen.",
+    "morning": "Time set to morning.",
+    "noon": "Time set to noon.",
+    "evening": "Time set to evening.",
+    "night": "Time set to night.",
+    "change": "Time has changed to %s:%s.",
+    "invalid": "Invalid syntax, correct syntax is: /time <hour> <minute>"
+  },
+  "blackout": {
+    "enabled": "Blackout is now enabled.",
+    "disabled": "Blackout is now disabled."
+  },
+  "help": {
+    "weathercommand": "Change the weather.",
+    "weathertype": "weathertype",
+    "availableweather": "Available types: blizzard, clouds, drizzle, fog, groundblizzard, hail, highpressure, hurricane, misty, overcast, overcastdark, rain, sandstorm, shower, sleet, snow, snowlight, sunny, thunder, thunderstorm, whiteout",
+    "timecommand": "Change the time.",
+    "timehname": "hours",
+    "timemname": "minutes",
+    "timeh": "A number between 0 - 23",
+    "timem": "A number between 0 - 59",
+    "freezecommand": "Freeze / unfreeze time.",
+    "freezeweathercommand": "Enable / disable dynamic weather changes.",
+    "morningcommand": "Set the time to 09:00",
+    "nooncommand": "Set the time to 12:00",
+    "eveningcommand": "Set the time to 18:00",
+    "nightcommand": "Set the time to 23:00",
+    "blackoutcommand": "Toggle blackout mode."
+  },
+  "error": {
+    "not_allowed": "You are not allowed to use this command."
+  }
+}

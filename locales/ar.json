@@ -1,0 +1,46 @@
+{
+  "notify_title": "الطقس والوقت",
+  "weather": {
+    "updated": "تم تحديث الطقس.",
+    "invalid": "نوع الطقس غير صحيح. الأنواع المتاحة: blizzard, clouds, drizzle, fog, groundblizzard, hail, highpressure, hurricane, misty, overcast, overcastdark, rain, sandstorm, shower, sleet, snow, snowlight, sunny, thunder, thunderstorm, whiteout",
+    "willchangeto": "سيتغير الطقس إلى: %s."
+  },
+  "dynamic_weather": {
+    "enabled": "تم تفعيل التغير التلقائي للطقس.",
+    "disabled": "تم إيقاف التغير التلقائي للطقس."
+  },
+  "time": {
+    "now_frozen": "تم تجميد الوقت.",
+    "now_unfrozen": "تم إلغاء تجميد الوقت.",
+    "morning": "تم ضبط الوقت على الصباح.",
+    "noon": "تم ضبط الوقت على الظهيرة.",
+    "evening": "تم ضبط الوقت على المساء.",
+    "night": "تم ضبط الوقت على الليل.",
+    "change": "تم تغيير الوقت إلى %s:%s.",
+    "invalid": "صيغة غير صحيحة، الصيغة الصحيحة: /time <الساعة> <الدقيقة>"
+  },
+  "blackout": {
+    "enabled": "تم تفعيل وضع الظلام (إطفاء الأنوار).",
+    "disabled": "تم إيقاف وضع الظلام (إعادة الأنوار)."
+  },
+  "help": {
+    "weathercommand": "تغيير الطقس.",
+    "weathertype": "نوع الطقس",
+    "availableweather": "الأنواع المتاحة: blizzard, clouds, drizzle, fog, groundblizzard, hail, highpressure, hurricane, misty, overcast, overcastdark, rain, sandstorm, shower, sleet, snow, snowlight, sunny, thunder, thunderstorm, whiteout",
+    "timecommand": "تغيير الوقت.",
+    "timehname": "الساعة",
+    "timemname": "الدقيقة",
+    "timeh": "رقم بين 0 و 23",
+    "timem": "رقم بين 0 و 59",
+    "freezecommand": "تجميد / إلغاء تجميد الوقت.",
+    "freezeweathercommand": "تفعيل / إيقاف التغير التلقائي للطقس.",
+    "morningcommand": "ضبط الوقت على 09:00",
+    "nooncommand": "ضبط الوقت على 12:00",
+    "eveningcommand": "ضبط الوقت على 18:00",
+    "nightcommand": "ضبط الوقت على 23:00",
+    "blackoutcommand": "تبديل وضع الظلام."
+  },
+  "error": {
+    "not_allowed": "لا تملك صلاحية استخدام هذا الأمر."
+  }
+}
