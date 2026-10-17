@@ -173,9 +173,25 @@ end
 
 -- EVENTS
 
+-- Audit (2026-10-18): a player's ask is answered to HIM only, at most once a second; the server's own call
+-- (setDynamicWeather, TriggerEvent) still syncs everyone. Before, any player could make the server broadcast to all
+-- players as fast as he liked.
+local lastSyncAsk = {}
 RegisterNetEvent("w_weathersync:server:RequestStateSync", function()
-	TriggerClientEvent("w_weathersync:client:SyncWeather", -1, CurrentWeather, blackout)
-	TriggerClientEvent("w_weathersync:client:SyncTime", -1, baseTime, timeOffset, freezeTime)
+	local src = tonumber(source)
+	local target = -1
+	if src and src > 0 then
+		local now = GetGameTimer()
+		if lastSyncAsk[src] and now - lastSyncAsk[src] < 1000 then return end
+		lastSyncAsk[src] = now
+		target = src
+	end
+	TriggerClientEvent("w_weathersync:client:SyncWeather", target, CurrentWeather, blackout)
+	TriggerClientEvent("w_weathersync:client:SyncTime", target, baseTime, timeOffset, freezeTime)
+end)
+
+AddEventHandler("playerDropped", function()
+	lastSyncAsk[source] = nil
 end)
 
 RegisterNetEvent("w_weathersync:server:setWeather", function(weather)
