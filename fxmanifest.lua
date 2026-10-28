@@ -20,5 +20,4 @@ server_scripts { 'server/*.lua' }
 files { 'locales/*.json' }
 
 dependency 'w_lib'
--- w_core: its core object is fetched at load (commands, player loaded event)
-dependency 'w_core'
+-- w_core, RSG or VORP: the core object is fetched at load through w_lib (commands, player loaded event)

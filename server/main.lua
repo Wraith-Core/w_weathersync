@@ -244,19 +244,33 @@ end)
 
 -- COMMANDS (help texts use the server language: convar w_lib:locale)
 
-WCore.Commands.Add("freezetime", locale("help.freezecommand"), {}, false, function(source)
+-- Wraith Core and RSG keep a command table in their core (perm "god" = their god group); VORP has none, so there the
+-- command is an ACE-restricted one: `add_ace group.admin command.<name> allow` (2026-10-28, VORP / RSG support)
+local function addCommand(name, help, params, argsRequired, cb, perm)
+	if WCore and WCore.Commands and WCore.Commands.Add then
+		return WCore.Commands.Add(name, help, params, argsRequired, cb, perm)
+	end
+	RegisterCommand(name, function(source, args)
+		if argsRequired and #args < #params then
+			return notify(source, "weather.invalid", "error")
+		end
+		cb(source, args)
+	end, true)
+end
+
+addCommand("freezetime", locale("help.freezecommand"), {}, false, function(source)
 	local newState = setTimeFreeze()
 	notify(source, newState and "time.now_frozen" or "time.now_unfrozen", "success")
 	w.print.info(newState and "time is now frozen" or "time is no longer frozen")
 end, "god")
 
-WCore.Commands.Add("freezeweather", locale("help.freezeweathercommand"), {}, false, function(source)
+addCommand("freezeweather", locale("help.freezeweathercommand"), {}, false, function(source)
 	local newState = setDynamicWeather()
 	notify(source, newState and "dynamic_weather.enabled" or "dynamic_weather.disabled", "success")
 	w.print.info(newState and "dynamic weather enabled" or "dynamic weather disabled")
 end, "god")
 
-WCore.Commands.Add(
+addCommand(
 	"weather",
 	locale("help.weathercommand"),
 	{ { name = locale("help.weathertype"), help = locale("help.availableweather") } },
@@ -274,33 +288,33 @@ WCore.Commands.Add(
 	"god"
 )
 
-WCore.Commands.Add("blackout", locale("help.blackoutcommand"), {}, false, function(source)
+addCommand("blackout", locale("help.blackoutcommand"), {}, false, function(source)
 	local newState = setBlackout()
 	notify(source, newState and "blackout.enabled" or "blackout.disabled", "success")
 	w.print.info(newState and "blackout enabled" or "blackout disabled")
 end, "god")
 
-WCore.Commands.Add("morning", locale("help.morningcommand"), {}, false, function(source)
+addCommand("morning", locale("help.morningcommand"), {}, false, function(source)
 	setTime(9, 0)
 	notify(source, "time.morning", "success")
 end, "god")
 
-WCore.Commands.Add("noon", locale("help.nooncommand"), {}, false, function(source)
+addCommand("noon", locale("help.nooncommand"), {}, false, function(source)
 	setTime(12, 0)
 	notify(source, "time.noon", "success")
 end, "god")
 
-WCore.Commands.Add("evening", locale("help.eveningcommand"), {}, false, function(source)
+addCommand("evening", locale("help.eveningcommand"), {}, false, function(source)
 	setTime(18, 0)
 	notify(source, "time.evening", "success")
 end, "god")
 
-WCore.Commands.Add("night", locale("help.nightcommand"), {}, false, function(source)
+addCommand("night", locale("help.nightcommand"), {}, false, function(source)
 	setTime(23, 0)
 	notify(source, "time.night", "success")
 end, "god")
 
-WCore.Commands.Add(
+addCommand(
 	"time",
 	locale("help.timecommand"),
 	{
