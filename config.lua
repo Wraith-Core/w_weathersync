@@ -33,7 +33,3 @@ Config.AvailableWeatherTypes = { -- DON'T TOUCH EXCEPT IF YOU KNOW WHAT YOU ARE 
 	"THUNDERSTORM", --0x7C1C4A13
 	"WHITEOUT", --0x2B402288
 }
-
-
--------------------------------------------------
-WCore = w.framework:getCoreObject()

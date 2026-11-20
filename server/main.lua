@@ -244,18 +244,8 @@ end)
 
 -- COMMANDS (help texts use the server language: convar w_lib:locale)
 
--- Wraith Core and RSG keep a command table in their core (perm "god" = their god group); VORP has none, so there the
--- command is an ACE-restricted one: `add_ace group.admin command.<name> allow` (2026-10-28, VORP / RSG support)
 local function addCommand(name, help, params, argsRequired, cb, perm)
-	if WCore and WCore.Commands and WCore.Commands.Add then
-		return WCore.Commands.Add(name, help, params, argsRequired, cb, perm)
-	end
-	RegisterCommand(name, function(source, args)
-		if argsRequired and #args < #params then
-			return notify(source, "weather.invalid", "error")
-		end
-		cb(source, args)
-	end, true)
+	return exports.w_lib:FwAddCommand(name, help, params, argsRequired, cb, perm)
 end
 
 addCommand("freezetime", locale("help.freezecommand"), {}, false, function(source)

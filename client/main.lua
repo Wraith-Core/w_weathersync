@@ -7,13 +7,11 @@ local freezeTime = Config.FreezeTime
 local blackout = Config.Blackout
 local disable = Config.Disabled
 
--- the character is in the world: Wraith Core, RSG and VORP each announce it with their own event
-for _, event in ipairs({ "WCore:Client:OnPlayerLoaded", "RSGCore:Client:OnPlayerLoaded", "vorp:SelectedCharacter" }) do
-	RegisterNetEvent(event, function()
-		disable = false
-		TriggerServerEvent("w_weathersync:server:RequestStateSync")
-	end)
-end
+-- the character is in the world: w_lib normalizes the load event across every framework
+exports.w_lib:FwOnCharacterLoaded(function()
+	disable = false
+	TriggerServerEvent("w_weathersync:server:RequestStateSync")
+end)
 
 -- Server notices arrive as dictionary keys (+ format args) and are translated
 -- here, in the player's own language (library key, ar/en).
